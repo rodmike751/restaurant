@@ -58,7 +58,7 @@
 
                     <button
                         style="box-shadow: 0px 0px 5px -1px lightblue; padding: 0.4rem; border-radius: 5px; background: ghostwhite"><a
-                            href="/login">Login instead</a></button>
+                            href="{% url 'website:login' %}">Login instead</a></button>
                 </div>
             </div>
         </div>
@@ -69,7 +69,6 @@
         </div>
     </div>
 
-    <script src="{% static 'assets/scripts/auth.js' %}"></script>
 </body>
 
 </html>

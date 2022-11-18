@@ -8,21 +8,6 @@ setInterval(() => {
 
 
 
-let isLoggedIn = false;
-while (true) {
-    isLoggedIn = (localStorage.getItem("isLoggedIn"))
-    if (isLoggedIn === "false") {
-        document.location.href = "/assets/login.html";
-    }
-    break
-}
-
-document.querySelector(".logout").addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.setItem("isLoggedIn", false);
-    document.location.href = "/assets/login.html"
-})
-
 
 const ViewBtn = document.querySelectorAll('.btn-view')
 const BuyBtn = document.querySelectorAll('.btn-buy');
