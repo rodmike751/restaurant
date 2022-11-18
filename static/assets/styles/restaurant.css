@@ -1,0 +1,32 @@
+.homeContainer1 .banner{
+    display: flex;
+}
+@media only screen and (max-width: 850px){
+    .homeContainer1 .banner{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .homeContainer1 .foodImg{
+        width: 90% !important;
+        height: 200px;
+    }
+    .foodPrice{
+        font-weight: 800;
+        font-size: 2rem;
+    }
+    .subDes button{
+        width: 250px;
+    }
+}
+.homeContainer1 .banner .foodImg{
+    margin: 1rem;
+    width: 70%;
+}
+
+.homeContainer1{
+    overflow: hidden;
+    overflow-y: auto;
+}
+.homeContainer1 section{
+    padding: 1rem 2rem 1rem 2rem;
+}

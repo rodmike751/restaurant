@@ -1,0 +1,586 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resto</title>
+
+    <link rel="stylesheet" href="{% static 'assets/styles/main.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/styles/orders.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/styles/menu.css' %}">
+
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css' %}"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Poppins:wght@330&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css' %}">
+    <script src="{% static 'https://cdn.js' %}delivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js' %}"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css' %}">
+
+</head>
+
+<body>
+    <p class="som"></p>
+    <div class="mainContainer">
+        <section class="sideBar">
+            <div class="sidebarInner">
+                <div class="profileImg">
+                <aside class="pImg">
+                    <img src="./img/profile.jpeg" alt="">
+                </aside>
+            </div>
+            <br><br><br>
+            <div class="navContainer">
+                <aside class="navList">
+                    <a href="../index.html">
+                        <li class="nav">
+                            <small class="fa fa-house"></small>
+                            <small>Home</small>
+                        </li>
+                    </a>
+                    <a href="./restaurant.html" class="orderNav">
+                        <li class="nav">
+                            <small class="fa fa-utensils"></small>
+                            <small>Restaurants</small>
+                        </li>
+                    </a>
+                    <a href="./orders.html" class="orderNav">
+                        <li class="nav">
+                            <small class="fa fa-sort"></small>
+                            <small>Orders</small>
+                        </li>
+                    </a>
+                    <a href="">
+                        <li class="nav">
+                            <small class="fa fa-bowl-food"></small>
+                            <small>Menu</small>
+                        </li>
+                    </a>
+                    <a href="./settings.html">
+                        <li class="nav">
+                            <small class="fa fa-gear"></small>
+                            <small>Settings</small>
+                        </li>
+                    </a>
+                </aside>
+            </div>
+
+            <div class="logout">
+                <aside class="logoutBtn">
+                    <small class="fa fa-right-from-bracket"></small>
+                </aside>
+                <small>LOGOUT</small>
+            </div>
+            </div>
+            
+        </section>
+
+        <section class="mainBody">
+            <!-- Header section -->
+            <div class="header">
+                <div class="flex">
+                    <i class="fa fa-bars"></i>
+                    <aside class="username_date">
+                        <h2 class="username">Joshua Odame</h2>
+                        <small class="todayDate">March, 23, 12:14 PM</small>
+                    </aside>
+                </div>
+                <div style="display: flex;align-items: center;margin-right: 5px;">
+                    <form class="search">
+                        <div class="searchBar">
+                            <input type="text">
+                        </div>
+                        <button class="searchBtn">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </form>
+                
+                    <aside class="cartBtn" style="display: flex;align-items: center;">
+                        <i class="fa fa-cart-shopping" style="font-size: 2rem;padding:0 0.5rem 0 1.5rem;"></i>
+                        <div style="display: flex;align-items: center;justify-content:center;border: 1px solid red;width: 25px; height: 25px;border-radius: 50%; border-radius: 50;"
+                            class="countCart">5</div>
+                    </aside>
+                
+                    <div class="cart">
+                        <aside class=""
+                            style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
+                            <div style="display: flex;align-items: center;justify-content: flex-start;">
+                                <div class="foodImg"
+                                    style="width: 30px;height: 30px;overflow: hidden; border-radius: 50%;margin:0 5px 0 0;">
+                                    <img src="{% static './img/meal1.jpg' %}" alt="">
+                                </div>
+                                <div class="foodTitle" style="display: flex;flex-direction: column;">
+                                    <small style="margin: 0;padding: 0;">Jollof</small>
+                                    <small style="margin: 0;padding: 0;">12:25</small>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <b>Delete</b>
+                            </div>
+                        </aside>
+                
+                        <aside class=""
+                            style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
+                            <div style="display: flex;align-items: center;justify-content: flex-start;">
+                                <div class="foodImg"
+                                    style="width: 30px;height: 30px;overflow: hidden; border-radius: 50%;margin:0 5px 0 0;">
+                                    <img src="{% static './img/meal1.jpg' %}" alt="">
+                                </div>
+                                <div class="foodTitle" style="display: flex;flex-direction: column;">
+                                    <small style="margin: 0;padding: 0;">Jollof</small>
+                                    <small style="margin: 0;padding: 0;">12:25</small>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <b>Delete</b>
+                            </div>
+                        </aside>
+                
+                        <aside class=""
+                            style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
+                            <div style="display: flex;align-items: center;justify-content: flex-start;">
+                                <div class="foodImg"
+                                    style="width: 30px;height: 30px;overflow: hidden; border-radius: 50%;margin:0 5px 0 0;">
+                                    <img src="{% static './img/meal1.jpg' %}" alt="">
+                                </div>
+                                <div class="foodTitle" style="display: flex;flex-direction: column;">
+                                    <small style="margin: 0;padding: 0;">Jollof</small>
+                                    <small style="margin: 0;padding: 0;">12:25</small>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <b>Delete</b>
+                            </div>
+                        </aside>
+                
+                        <aside class=""
+                            style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
+                            <h4 class="text-primary" style="text-align: center;width: 100%;font-weight: 600;">GHC 234</h4>
+                        </aside>
+                
+                        <aside class=""
+                            style="display: flex;justify-content: space-between;align-items: center;padding: 0.4rem;background-color: azure;margin: 0 0 0.5rem 0;">
+                            <button class="btn btn-primary" style="width: 100%;">Place Order</button>
+                        </aside>
+                        <i class="closeCart fa fa-times"
+                            style="position: absolute;top: 0.7rem;left: 0.7rem; color: red; border: 1px solid red;width: 30px; height: 30px; border-radius: 50%;display: flex;justify-content: center;align-items: center;background-color: white;box-shadow: 0px 0px 5px -1px gray;cursor: pointer;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu mainPage">
+                <div class="container1">
+                    <section class="sec2">
+                        <h3>Resto Menu</h3>
+                        <div class="availableMeals">
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal2.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal3.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal2.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal2.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal3.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal1.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                            <aside class="item">
+                                <!-- <div class="itm-inner"> -->
+                                <img src="{% static './img/meal2.jpg' %}" alt="">
+                                <!-- </div> -->
+                                <div class="subDet">
+                                    <small
+                                        style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
+                                        with Chicken</small>
+                                    <h1>GHC 230</h1>
+                                    <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white;">View Details</a></button>
+                                    <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy /
+                                        Order</button>
+                                </div>
+                            </aside>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+
+        </section>
+    </div>
+    <script>
+
+        const bars = document.querySelector(".fa-bars");
+        const sideBar = document.querySelector(".sideBar");
+        let checkSidebar = false;
+        function checkBar() {
+            if (!checkSidebar) {
+                sideBar.classList.remove("showSidebar")
+                bars.classList.remove("fa-times")
+                if (!bars.classList.contains("fa-bars")) {
+                    bars.classList.add("fa-bars")
+                }
+            } else {
+                sideBar.classList.add("showSidebar")
+                bars.classList.add("fa-times")
+                if (bars.classList.contains("fa-bars")) {
+                    bars.classList.remove("fa-bars")
+                }
+            }
+        }
+        bars.addEventListener("click", () => {
+            checkSidebar = !checkSidebar;
+            checkBar();
+        })
+    </script>
+    <script src="{% static 'assets/scripts/uiInteractions.js' %}"></script>
+    <script src="{% static 'assets/scripts/menu.js' %}"></script>
+    <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

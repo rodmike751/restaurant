@@ -1,0 +1,24 @@
+.mealDetail .banner{
+    display: flex;
+}
+@media only screen and (max-width: 850px){
+    .mealDetail .banner{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .banner .foodImg{
+        width: 90% !important;
+        height: 200px;
+    }
+    .foodPrice{
+        font-weight: 800;
+        font-size: 2rem;
+    }
+    .subDes button{
+        width: 250px;
+    }
+}
+.mealDetail .banner .foodImg{
+    margin: 1rem;
+    width: 70%;
+}
