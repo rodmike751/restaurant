@@ -5,7 +5,7 @@ admin.site.site_title = "Resto CPanel"
 admin.site.site_header = "Resto CPanel"
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ["user", "delivered"]
+    list_display = ["user", "in_cart", "delivered"]
     list_filter = ["delivered"]
 
 

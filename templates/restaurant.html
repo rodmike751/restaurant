@@ -26,7 +26,7 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">Joshua Odame</h2>
+                <h2 class="username">{{request.user.username}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
@@ -48,132 +48,29 @@
 
     <div class="mainPage">
         <div class="container1 homeContainer1">
+            {% for object in restaurants %}
             <section>
-                <h3>Restaurant name</h3>
+                <h3>{{object.name}}</h3>
                 <div class="banner">
                     <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
+                        <img src="{{object.image.url}}" alt="">
                     </div>
                     <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
+                        <h1 class="mainFoodTitle">{{object.meals.first.name}}</h1>
+                        <i>{{object.meals.first.description|truncatewords:50}}</i><br><br>
                         <p>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
                             ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
                             unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
                         </p>
-                        <h1 class="text-primary foodPrice">Rating: 70%</h1>
+                        <h1 class="text-primary foodPrice">Rating: {{object.meals.first.rating}}%</h1>
                         <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
+                        <button class="btn btn-primary btnBuy" price="{{object.meals.first.price}}" name="{{object.meals.first.name}}">Buy Meal</button>
 
                     </div>
                 </div>
             </section>
-            <section>
-                <h3>Restaurant name</h3>
-                <div class="banner">
-                    <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
-                    </div>
-                    <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
-                        </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
-                        <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
-
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3>Restaurant name</h3>
-                <div class="banner">
-                    <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
-                    </div>
-                    <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
-                        </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
-                        <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
-
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3>Restaurant name</h3>
-                <div class="banner">
-                    <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
-                    </div>
-                    <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
-                        </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
-                        <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
-
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3>Restaurant name</h3>
-                <div class="banner">
-                    <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
-                    </div>
-                    <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
-                        </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
-                        <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
-
-                    </div>
-                </div>
-            </section>
-            <section>
-                <h3>Restaurant name</h3>
-                <div class="banner">
-                    <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
-                    </div>
-                    <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
-                        <i>One of our most popular meals with a higher rated stars</i><br><br>
-                        <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
-                        </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
-                        <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
-
-                    </div>
-                </div>
-            </section>
+            {% endfor %}
 
         </div>
     </div>

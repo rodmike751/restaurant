@@ -26,7 +26,7 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">Joshua Odame</h2>
+                <h2 class="username">{{request.user.username}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
@@ -60,95 +60,45 @@
                 <section class="ordersBody">
                     <div class="titles">
                         <small class="si">SI No</small>
-                        <small class="titleHead meal">Meal</small>
+                        <small class="titleHead meal">Meal(s)</small>
                         <small class="titleHead">Price</small>
                         <small class="titleHead">Date</small>
                         <small class="titleHead">Delivered</small>
                     </div>
+                    {% for object in orders %}
                     <div class="orderItem">
-                        <small class="si">1</small>
+                        <small class="si">{{forloop.counter}}</small>
                         <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
+                            <ul>
+                                {% for meal in object.meal.all %}
+                                <li>
+                                    <strong>- {{meal.name}}</strong>
+                                </li>
+                                <li>
+                                    <strong>- {{meal.name}}</strong>
+                                </li>
+                                <li>
+                                    <strong>- {{meal.name}}</strong>
+                                </li>
+                                {% endfor %}
+                            </ul>
+
+                            
                         </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
+                        <small class="order">${{object.get_total_price}}</small>
+                        <small class="order">{{object.created_at}}</small>
+                        <small class="order">
+                            {% if delivered %}
+                                TRUE
+                            {% else %}
+                                FALSE 
+                            {% endif %} 
                         </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
                     </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
-                        </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
-                        </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
-                        </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
-                        </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
-                    <div class="orderItem">
-                        <small class="si">1</small>
-                        <small class="order meal">
-                            <div class="mealImg">
-                                <img src="{% static './img/meal.jpg' %}" alt="">
-                            </div>
-                            <strong>Jollof</strong>
-                        </small>
-                        <small class="order">$23.34</small>
-                        <small class="order">22/12/22, 12:23</small>
-                        <small class="order">true</small>
-                    </div>
+                    {% if empty %}
+                         <h5>No order</h5>
+                    {% endif %}
+                    {% endfor %}
 
                 </section>
 

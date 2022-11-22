@@ -27,7 +27,7 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">Joshua Odame</h2>
+                <h2 class="username">{{request.user.username}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
@@ -47,7 +47,7 @@
                     class="countCart">5</div>
             </aside>
 
-            <div class="cart">
+            <div class="cart">id
                 <aside class=""
                     style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
                     <div style="display: flex;align-items: center;justify-content: flex-start;">
@@ -118,22 +118,23 @@
     <div class="menu mainPage mealDetail">
         <div class="container1">
             <section class="sec2" style="display: flex;flex-direction: column;">
-                <h3 class="footTitle">Jollof Rice</h3>
+                <h3 class="footTitle">{{meal.name}}</h3>
                 <div class="banner">
                     <div class="foodImg">
-                        <img src="{% static './img/meal2.jpg' %}" alt="">
+                        <img src="{{meal.image.url}}" alt="">
                     </div>
                     <div class="subDes">
-                        <h1 class="mainFoodTitle">Jollof Rice</h1>
                         <i>One of our most popular meals with a higher rated stars</i><br><br>
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
+                            {{meal.description}}
                         </p>
-                        <h1 class="text-primary foodPrice">GHC 234.34</h1>
+                        <h1 class="text-primary foodPrice">${{meal.price}}</h1>
                         <br>
-                        <button class="btn btn-primary btnBuy" price="234" name="Jollof with chicken">Buy Meal</button>
+                        <button class="btn btn-primary btnBuy" price="{{meal.price}}" name="{{meal.name}}">
+                            <a href="{% url 'website:order-meal' meal.id %}">
+                                Buy
+                            </a>
+                        </button>
 
                     </div>
                 </div>
@@ -142,51 +143,26 @@
                 <div class="relatedMeal">
                     <h3>Related Meals</h3>
                     <div class="availableMeals">
+                        {% for object in meals %}
                         <aside class="item">
                             <!-- <div class="itm-inner"> -->
-                            <img src="{% static './img/meal.jpg' %}" alt="">
+                            <img src="{{object.image.url}}" alt="">
                             <!-- </div> -->
                             <div class="subDet">
-                                <small style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
-                                    with Chicken</small>
-                                <h1>GHC 230</h1>
-                                <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white">View
+                                <small
+                                    style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">{{object.name}}</small>
+                                <h1>${{object.price}}</h1>
+                                <button class="btn btn-view" id=""><a href="{% url 'website:menus-detail' object.id %}"
+                                        style="color: white">View
                                         Details</a></button>
-                                <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy
-                                    /
-                                    Order</button>
+                                <button class="btn btn-buy" id="">
+                                    <a href="{% url 'website:order-meal' object.id %}">
+                                        Buy
+                                    </a>
+                                </button>
                             </div>
                         </aside>
-                        <aside class="item">
-                            <!-- <div class="itm-inner"> -->
-                            <img src="{% static './img/meal1.jpg' %}" alt="">
-                            <!-- </div> -->
-                            <div class="subDet">
-                                <small style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
-                                    with Chicken</small>
-                                <h1>GHC 230</h1>
-                                <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white">View
-                                        Details</a></button>
-                                <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy
-                                    /
-                                    Order</button>
-                            </div>
-                        </aside>
-                        <aside class="item">
-                            <!-- <div class="itm-inner"> -->
-                            <img src="{% static './img/meal.jpg' %}" alt="">
-                            <!-- </div> -->
-                            <div class="subDet">
-                                <small style="width: 90%; text-align: center;font-size: 1.6rem;font-weight: 600;">Jollof
-                                    with Chicken</small>
-                                <h1>GHC 230</h1>
-                                <button class="btn btn-view" id=""><a href="./mealDetail.html" style="color: white">View
-                                        Details</a></button>
-                                <button class="btn btn-buy" price="234" name="Jollof with chicken" id="">Buy
-                                    /
-                                    Order</button>
-                            </div>
-                        </aside>
+                        {% endfor %}
                     </div>
                 </div>
             </section>
