@@ -19,6 +19,29 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+    .content {
+        padding: 3rem;
+
+    }
+
+    input {
+        margin-bottom: 2rem;
+        padding: 0.5rem;
+        border-radius: 7px;
+        border: none;
+        box-shadow: 0 0 3px grey;
+    }
+
+    .helptext {
+        display: none;
+    }
+
+    .user-form label:nth-child(13), #id_password{
+        display: none;
+    }
+    
+</style>
 {% endblock %}
 
 {% block content %}
@@ -28,20 +51,12 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">Joshua Odame</h2>
+                <h2 class="username">{{request.user.first_name}} {{request.user.last_name}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
         <div style="display: flex;align-items: center;margin-right: 5px;">
-            <form class="search">
-                <div class="searchBar">
-                    <input type="text">
-                </div>
-                <button class="searchBtn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-
+            
             {% include 'cartcomponent.html' %}
         </div>
     </div>
@@ -50,33 +65,19 @@
         <div class="settingsContainer">
             <aside class="settingsInner">
                 <br>
-                <small>Click on image to change your profile picture</small><br>
                 <div class="profileImg">
                     <input type="file">
-                    <img src="assets/img/profile.jpeg" alt="">
+                    <img src="{% static 'assets/img/profile.jpeg' %}" alt="">
                 </div>
 
                 <br>
-
-                <div class="content">
-                    <small>Username</small><br>
-                    <input type="text" placeholder="Username">
-                    <br>
-                    <p></p>
-
-                    <small>Password</small><br>
-                    <input type="password" placeholder="Username">
-                    <br>
-                    <p></p>
-
-                    <small>Phone</small><br>
-                    <input type="text" placeholder="Phone number">
-                    <br>
-                    <p></p>
-                    <br>
-
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </div>
+                <form class="user-form" method="POST">
+                    {% csrf_token %}
+                    <div class="content">
+                        {{form}}
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </form>
 
 
             </aside>

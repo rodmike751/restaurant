@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resto {% block title %}{% endblock %}</title>
-    {% block styles %}  {% endblock %}
-  
+    {% block styles %} {% endblock %}
+
 </head>
 
 <body>
@@ -16,69 +16,78 @@
     <div class="mainContainer">
         <section class="sideBar">
             <div class="sidebarInner">
-            <div class="profileImg">
-                <aside class="pImg">
-                    <img src="{% static 'assets/img/profile.jpeg' %}" alt="">
-                </aside>
-            </div>
-            <br><br><br>
-            <div class="navContainer">
-                <aside class="navList">
-                    <a  href="/" class="homeNav">
-                        <li class="nav">
-                            <small class="fa fa-house"></small>
-                            <small>Home</small>
-                        </li>
-                    </a>
-                    <a href="{% url 'website:restaurants' %}" class="restaurant">
-                        <li class="nav">
-                            <small class="fa fa-utensils"></small>
-                            <small>Restaurants</small>
-                        </li>
-                    </a>
-                    <a href="{% url 'website:orders' %}" class="orderNav">
-                        <li class="nav">
-                            <small class="fa fa-sort"></small>
-                            <small>Orders</small>
-                        </li>
-                    </a>
-                    
-                    <a href="{% url 'website:menus' %}" class="menuNav">
-                        <li class="nav">
-                            <small class="fa fa-bowl-food"></small>
-                            <small>Menu</small>
-                        </li>
-                    </a>
-                    <a href="{% url 'website:settings' %}">
-                        <li class="nav">
-                            <small class="fa fa-gear"></small>
-                            <small>Settings</small>
-                        </li>
-                    </a>
+                <div class="profileImg">
+                    <aside class="pImg">
+                        <img src="{% static 'assets/img/profile.jpeg' %}" alt="">
+                    </aside>
+                </div>
+                <br><br><br>
+                <div class="navContainer">
+                    <aside class="navList">
+                        <a href="/" class="homeNav">
+                            <li class="nav">
+                                <small class="fa fa-house"></small>
+                                <small>Home</small>
+                            </li>
+                        </a>
+                        <a href="{% url 'website:restaurants' %}" class="restaurant">
+                            <li class="nav">
+                                <small class="fa fa-utensils"></small>
+                                <small>Restaurants</small>
+                            </li>
+                        </a>
+                        <a href="{% url 'website:orders' %}" class="orderNav">
+                            <li class="nav">
+                                <small class="fa fa-sort"></small>
+                                <small>Orders</small>
+                            </li>
+                        </a>
 
-                </aside>
+                        <a href="{% url 'website:menus' %}" class="menuNav">
+                            <li class="nav">
+                                <small class="fa fa-bowl-food"></small>
+                                <small>Menu</small>
+                            </li>
+                        </a>
+                        <a href="{% url 'website:settings' %}">
+                            <li class="nav">
+                                <small class="fa fa-gear"></small>
+                                <small>Settings</small>
+                            </li>
+                        </a>
+
+                    </aside>
+                </div>
+
+                <div class="logout">
+                    <aside class="logoutBtn">
+                        <small class="fa fa-right-from-bracket"></small>
+                    </aside>
+                    <small>LOGOUT</small>
+                </div>
             </div>
 
-            <div class="logout">
-                <aside class="logoutBtn">
-                    <small class="fa fa-right-from-bracket"></small>
-                </aside>
-                <small>LOGOUT</small>
-            </div>
-            </div>
-            
         </section>
 
         {% block content %}
 
         {% endblock %}
     </div>
-     {% block scripts %} {% endblock %}
+    {% block scripts %} {% endblock %}
     <script>
-        document.querySelector(".logout").addEventListener('click', ()=>{
+        document.querySelector(".logout").addEventListener('click', () => {
             document.location.href = "{% url 'website:logout' %}";
         })
     </script>
+    <script>
+        setInterval(() => {
+            const full_date = new Date().toLocaleDateString(); //Date String
+            const full_time = new Date().toLocaleTimeString(); // Time String
+
+            document.querySelector(".todayDate").innerText = `${full_date}, ${full_time}`
+        }, 1000);
+    </script>
+   
 </body>
 
 </html>

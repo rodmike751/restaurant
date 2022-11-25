@@ -18,7 +18,23 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+    .scroll-meal{
+        display:grid;
+        grid-template-columns: repeat(1,1fr);
+        overflow: hidden;
+        overflow-y: auto;
+        height: 100%;
+        
+    }
+    .scroll-meal li{
+        margin: 0;
+    }
+</style>
+
 {% endblock %}
+
+
 {% block content %}
 <section class="mainBody">
     <!-- Header section -->
@@ -26,20 +42,12 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">{{request.user.username}}</h2>
+                <h2 class="username">{{request.user.first_name}} {{request.user.last_name}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
         <div style="display: flex;align-items: center;margin-right: 5px;">
-            <form class="search">
-                <div class="searchBar">
-                    <input type="text">
-                </div>
-                <button class="searchBtn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-
+            
             {% include 'cartcomponent.html' %}
         </div>
     </div>
@@ -64,39 +72,45 @@
                         <small class="titleHead">Price</small>
                         <small class="titleHead">Date</small>
                         <small class="titleHead">Delivered</small>
+                        <small class="titleHead">Action</small>
                     </div>
                     {% for object in orders %}
                     <div class="orderItem">
                         <small class="si">{{forloop.counter}}</small>
                         <small class="order meal">
-                            <ul>
+                            <ul class="scroll-meal">
                                 {% for meal in object.meal.all %}
-                                <li>
-                                    <strong>- {{meal.name}}</strong>
-                                </li>
-                                <li>
-                                    <strong>- {{meal.name}}</strong>
-                                </li>
-                                <li>
-                                    <strong>- {{meal.name}}</strong>
-                                </li>
+                                    <li>
+                                        <strong>- {{meal.name}}</strong>
+                                    </li>
+                                    
                                 {% endfor %}
                             </ul>
 
-                            
+
                         </small>
                         <small class="order">${{object.get_total_price}}</small>
                         <small class="order">{{object.created_at}}</small>
                         <small class="order">
-                            {% if delivered %}
-                                TRUE
+                            {% if object.delivered == False %}
+                                False
                             {% else %}
-                                FALSE 
-                            {% endif %} 
+                                True
+                            {% endif %}
+                        </small>
+                        <small class="order">
+                            {% if object.delivered == False %}
+                            
+                                <a href="{% url 'website:order-delivered' object.id %}">
+                                    <button class="btn">
+                                        Received
+                                    </button>
+                                </a>
+                            {% endif %}
                         </small>
                     </div>
                     {% if empty %}
-                         <h5>No order</h5>
+                    <h5>No order</h5>
                     {% endif %}
                     {% endfor %}
 

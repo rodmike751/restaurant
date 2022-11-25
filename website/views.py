@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from .forms import RegisterForm, LoginForm
+from .forms import *
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from .models import *
@@ -57,9 +57,10 @@ def get_cart(request):
 @login_required()
 def dashboard(request):
     cart = get_cart(request)
-
+    meals = Meal.objects.all()
     context = {
-        "cart":cart
+        "cart":cart,
+        "meals":meals
     }
 
     return render(request, "index.html", context)
@@ -157,10 +158,19 @@ def order_switchto_delivered(request, oid):
 @login_required
 def settings_view(request):
     cart = get_cart(request)
+
+    if request.method == 'POST':
+        form  = EditUserForm(data= request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Update successful!")    
+
+    form = EditUserForm(instance=request.user)
     context = {
-        "cart":cart
+        "cart":cart,
+        "form":form
     }
-    return render(request, "settings.html", cart)
+    return render(request, "settings.html", context)
 
 
 def logout_view(request):

@@ -27,20 +27,12 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">{{request.user.username}}</h2>
+                <h2 class="username">{{request.user.first_name}} {{request.user.last_name}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
         <div style="display: flex;align-items: center;margin-right: 5px;">
-            <form class="search">
-                <div class="searchBar">
-                    <input type="text">
-                </div>
-                <button class="searchBtn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
-
+            
             {% include 'cartcomponent.html' %}
         </div>
     </div>
@@ -62,11 +54,13 @@
                             <h1>${{object.price}}</h1>
                             <button class="btn btn-view" id=""><a href="{% url 'website:menus-detail' object.id %}" style="color: white;">View
                                     Details</a></button>
-                            <button class="btn btn-buy" id="">
-                                <a href="{% url 'website:order-meal' object.id %}">
+                                    <a href="{% url 'website:order-meal' object.id %}">
+                                    <button class="btn btn-buy" id="">
+                               
                                      Buy
-                                </a>
+                                
                             </button>
+                            </a>
                         </div>
                     </aside>
                 {% endfor %}
@@ -104,6 +98,5 @@
         checkBar();
     })
 </script>
-<script src="{% static 'assets/scripts/uiInteractions.js' %}"></script>
 <script src="{% static 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js' %}"></script>
 {% endblock %}

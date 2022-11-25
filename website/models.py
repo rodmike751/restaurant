@@ -50,13 +50,9 @@ class Order(TimeBaseModel):
     def __str__(self):
         return f'{self.user.username} ordered {self.meal.name}'
 
-    def save(self, *args, **kwargs):
-        if self.delivered:
-            self.in_cart= False
-        super().save(*args, **kwargs)
-
     class Meta:
         verbose_name_plural = "Order"
+        ordering = ["-id"]
 
     @property
     def get_total_price(self):

@@ -18,6 +18,20 @@
     integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
     crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+    .banner{
+        height: 250px;
+        box-shadow: 0 0 5px lightgray;
+    }
+    .foodImg{
+        width: 30%;
+
+    }
+    .subDes{
+        width: 70%;
+    }
+</style>
+
 {% endblock %}
 {% block content %}
 <section class="mainBody">
@@ -26,21 +40,13 @@
         <div class="flex">
             <i class="fa fa-bars"></i>
             <aside class="username_date">
-                <h2 class="username">{{request.user.username}}</h2>
+                <h2 class="username">{{request.user.first_name}} {{request.user.last_name}}</h2>
                 <small class="todayDate">March, 23, 12:14 PM</small>
             </aside>
         </div>
 
 
         <div style="display: flex;align-items: center;margin-right: 5px;">
-            <form class="search">
-                <div class="searchBar">
-                    <input type="text">
-                </div>
-                <button class="searchBtn">
-                    <i class="fa fa-search"></i>
-                </button>
-            </form>
             {% include 'cartcomponent.html' %}
         </div>
     </div>
@@ -57,15 +63,17 @@
                     </div>
                     <div class="subDes">
                         <h1 class="mainFoodTitle">{{object.meals.first.name}}</h1>
-                        <i>{{object.meals.first.description|truncatewords:50}}</i><br><br>
+                        
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. A architecto sequi
-                            ratione mollitia optio exercitationem ea sunt voluptatum, eos cupiditate soluta
-                            unde aspernatur ipsa voluptate. Suscipit, architecto? Ab, recusandae. Ea!
+                            {{object.meals.first.description|truncatewords:50}}
                         </p>
                         <h1 class="text-primary foodPrice">Rating: {{object.meals.first.rating}}%</h1>
                         <br>
-                        <button class="btn btn-primary btnBuy" price="{{object.meals.first.price}}" name="{{object.meals.first.name}}">Buy Meal</button>
+                        <a href="{% url 'website:order-meal' object.id %}">
+                        <button class="btn btn-primary btnBuy" price="{{object.meals.first.price}}" name="{{object.meals.first.name}}">
+                            Buy Meal
+                        </button>
+                        </a>
 
                     </div>
                 </div>
