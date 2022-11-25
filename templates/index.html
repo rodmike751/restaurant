@@ -61,16 +61,17 @@
                 </div>
                 <div class="analysis">
                     <aside class="analysis1">
-                        <b>Today's Discount</b>
+                        <b>Successful Orders</b>
                         <div>
-                            <h1>10%</h1>
-                            <small>For Purchase</small>
+                            <h1>{{success_orders_count}}</h1>
+                            <small>orders</small>
                         </div>
                     </aside>
                     <aside class="analysis2">
-                        <b>Total Orders</b>
+                        <b>Pending Orders</b>
                         <div>
-                            <h1>28</h1>
+                            
+                            <h1>{{pending_orders_count}}</h1>
                             <small>orders</small>
                         </div>
                     </aside>
@@ -116,10 +117,14 @@
                 <form class="placeOrderForm">
                     <!-- Name input -->
                     <div class="form-group allSelected">
+                       {% for object in cart.meal.all %}
                         <small>
-                            <i id="234" class="fa fa-times removeFood"></i>
-                            <b>Jollof with chicken</b>
+                            <a href="{% url 'website:remove-meal-from-cart' object.id %}">
+                                <i id="234" class="fa fa-times removeFood"></i>
+                            </a>
+                            <b>{{object.name}}</b>
                         </small>
+                       {% endfor %}
                     </div>
 
                     <div class="form-group">
@@ -127,7 +132,7 @@
                     </div>
 
                     <div class="form-group">
-                        <h1 class="total text-primary" id="totalPrice">₵0</h1>
+                        <h1 class="total text-primary" id="totalPrice">${{cart.get_total_price}}</h1>
                     </div>
 
                     <asidej class="v-flex" style="margin-bottom: 0.8rem">
@@ -140,7 +145,11 @@
                         </aside>
                         <p></p>
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary placeOrderBtn">Place Order</button>
+                        {% if cart %}
+                        <a href="{% url 'website:place-order' cart.id %}">
+                            <button type="button" class="btn btn-primary placeOrderBtn">Place Order</button>
+                        </a>
+                        {% endif %}
                 </form>
             </dv>
             <div class="activeOrders">
@@ -149,33 +158,36 @@
                 </div>
                 <section class="sec1">
                     <div class="left">
-                        <small>Active Orders</small>
-                        <h6># 218084</h6>
+                        <!-- <small>Active Orders</small> -->
+                       
                     </div>
-                    <div class="right">
+                    <!-- <div class="right">
                         <small>TIME LEFT:</small>
                         <h3>09:12</h3>
-                    </div>
+                    </div> -->
                 </section>
 
                 <section class="sec2" id="recentOrders">
+                    {% for object in orders %}
+                    {% for meal in object.meal.all %}
                     <div class="orderItem">
                         <aside>
                             <div class="foodImg">
-                                <img src="{% static 'assets/img/meal1.jpg' %}" alt="">
+                                <img src="{{meal.image.url}}" alt="">
                             </div>
                             <div class="foodTitle">
-                                <small>Jollof</small><br>
-                                <small>12:25</small>
+                                <small>{{meal.name}}</small><br>
+                                <small>{{object.created_at}}</small>
                             </div>
                         </aside>
                         <div class="price">
-                            <b>$20.00</b>
+                            <b>${{meal.price}}</b>
                         </div>
                     </div>
-
-
+                    {% endfor %}
+                    {% endfor %}
                 </section>
+                
             </div>
 
 

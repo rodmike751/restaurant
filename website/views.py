@@ -58,9 +58,14 @@ def get_cart(request):
 def dashboard(request):
     cart = get_cart(request)
     meals = Meal.objects.all()
+    orders = Order.objects.filter(user=request.user, in_cart=False, delivered=False)
+    success_orders_count = Order.objects.filter(user=request.user, in_cart=False, delivered=True).count 
     context = {
         "cart":cart,
-        "meals":meals
+        "meals":meals,
+        "orders":orders,
+        "pending_orders_count":orders.count,
+        "success_orders_count":success_orders_count
     }
 
     return render(request, "index.html", context)

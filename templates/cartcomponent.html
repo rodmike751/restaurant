@@ -34,6 +34,9 @@
         </a>
     </aside>
     {% endfor %}
+    <aside class="" style="cursor: pointer;display: flex;justify-content: space-between;align-items: center;padding: 0.2rem;background-color: azure;margin: 0 0 0.5rem 0;">
+        <h4 class="text-primary" style="text-align: center;width: 100%;font-weight: 600;">GHC {{cart.get_total_price}}</h4>
+    </aside>
     <a href="{% url 'website:place-order' cart.id %}">
     <aside class=""
         style="display: flex;justify-content: space-between;align-items: center;padding: 0.4rem;background-color: azure;margin: 0 0 0.5rem 0;">
