@@ -17,7 +17,7 @@
 * SQlite3
 
 ### Setup
-## Installation on Linux and Mac OS
+## Installation on all OS
 
   ```
   (.venv) $ pip install -r requirements.txt
